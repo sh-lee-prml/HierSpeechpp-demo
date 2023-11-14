@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+HierSpeech++
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+          <style type="text/css">
+                 a:link { color: black; text-decoration: none;}
+                 a:visited { color: black; text-decoration: none;}
+                 a:hover { color: blue; text-decoration: underline;}
+             #player {width: 190px;}
+          </style>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no", user-scalable="yes">
+          <meta name="description" content="HierSpeech++ audio demo page">
+          <meta name="autor" content="HierSpeech++">
+          <title>HierSpeech++ Demo</title>
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+          <link href="css/styles.css" rel="stylesheet">
+          <link rel="stylesheet" href="css/heading.css">
+          <link rel="stylesheet" href="css/body.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ==" crossorigin="anonymous" />
+      </head>
+
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">HierSpeech++</a>
+                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#abstract">Abstract</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tts">Zero-shot TTS</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#vc">Zero-shot VC</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#speechsr">SpeechSR</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="masthead bg-white text-left"> 
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading mb-0">HierSpeech++: Bridging the Gap between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-shot Speech Synthesis</h1>
+		            <p class="pre-wrap lead">&nbsp;</p>
+                <p class="pre-wrap lead">Sang-Hoon Lee, Ha-Yeong Choi, Seung-Bin Kim, Seong-Whan Lee</p>	
+                <p class="pre-wrap lead">Korea University</p>	
+                <p class="pre-wrap lead">&nbsp;</p>	 
+                <img src="img/HierSpeech.png" alt="main" style="max-width: 100%; height: auto;"> 
+                <p class="pre-wrap lead">Overall framework of Hierspeech++</p>	
+            </div>
+        </header>
+        <style>
+          tr, td {
+            text-align:center;
+          }
+          tr {
+            font-size: 15pt;
+          }
+          td {
+            font-size: 13pt;
+          }
+        </style>
+    
+    <section class="page-section bg-primary text-white mb-0" id="abstract">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="page-section-heading d-inline-block text-white">Hierspeech++</h2>
+          <p class="pre-wrap lead"> Real-world Dataset</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ml-auto">
+              <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+
+                <thead>
+                  <tr >
+                 <th colspan="5"  style="width: 100%" ><em> Abstract</em><p></p><p><em> In this work, we once again significantly improve the naturalness and speaker similarity of the synthetic speech, even in the zero-shot speech synthesis scenarios. </em></p>
+                 </th> 
+                </tr>
+              
+              </thead>
+                <tbody>
+                  <tr>
+                    <td><p> Prompt 1 (Steve jobs) </p>
+                      <audio id="player" controls ><source src="audio/0_zeroshot_tts/expresso_tts/steve-jobs-2005.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p>  Prompt 2 (Whisper) </p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts/ex01_whisper_00359.wav" type="audio/wav"></audio>
+                    </td>
+                 
+                    <td><p>&nbsp; Prompt 3 (Angry)</p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts/ex03-ex01_angry_006-ex01_angry_css026.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p>&nbsp; Prompt 4 (Laughing) </p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts/ex04-ex01_laughing_006-ex01_laughing_css013.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p>Prompt 5 (Sleepy) </p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts/ex03-ex01_sleepy_001-ex01_sleepy_css005.wav" type="audio/wav"></audio>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><p><strong>HierSpeech++</strong></p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts_hier/steve-jobs-2005.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p><strong>HierSpeech++</strong></p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts_hier/ex01_whisper_00359.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p><strong>HierSpeech++</strong></p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts_hier/ex03-ex01_angry_006-ex01_angry_css026.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p><strong>HierSpeech++</strong></p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts_hier/ex04-ex01_laughing_006-ex01_laughing_css013.wav" type="audio/wav"></audio>
+                    </td>
+                    <td><p><strong>HierSpeech++</strong></p>
+                      <audio id="player" controls><source src="audio/0_zeroshot_tts/expresso_tts_hier/ex03-ex01_sleepy_001-ex01_sleepy_css005.wav" type="audio/wav"></audio>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+            </div>
+          </div> 
+      </div>
+        </section>
+   
+
+        <section class="page-section bg-info text-white mb-0" id="tts">	
+            <div class="container">
+              <div class="text-center">
+                <h2 class="page-section-heading d-inline-block text-white">Zero-shot TTS (LibriTTS)</h2>
+                <p class="pre-wrap lead"> All speakers are unseen during training</p>
+              </div>
+  
+              <div class="divider-custom divider-light">
+              </div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+  
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 1 (121_121726_000029_000003)</em><p></p><p><em> In Germany, they generally "Hock the Kaiser." </em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/121_121726_000029_000003.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                      
+                    </table>
+
+                      <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 2 (237_126133_000047_000000)</em><p></p><p><em> "Don't mind it, Polly," whispered Jasper; "twasn't her fault."</em></p>
+                       </th> 
+                      </tr>
+        
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/237_126133_000047_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 3 (260_123288_000020_000000)</em><p></p><p><em> "The sail! the sail!" I cry, motioning to lower it."</em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/260_123288_000020_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>            
+                    </table>
+
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 4 (908_31957_000017_000001)</em><p></p><p><em> A ring of amethyst I could not wear here, plainer to my sight, Than that first kiss.</em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/908_31957_000017_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>            
+                    </table>
+
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 5 (5683_32879_000025_000000)</em><p></p><p><em> 'No, indeed, Dorcas--never, and never will; and I think, though I have learned to fear death, I would rather die than let Stanley even suspect it.'</em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/5683_32879_000025_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>            
+                    </table>
+
+
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 100%" ><em>Sentence 6 (7021_85628_000026_000000)</em><p></p><p><em> The Princess certainly was beautiful, and he would have dearly liked to be kissed by her, but the cap which his mother had made he would not give up on any condition.</em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT </p>
+                            <audio id="player" controls ><source src="audio/1_zeroshot_tts/libritts_test_clean_full/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>  YourTTS </p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/YourTTS_test-clean/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp; HierSpeech</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeech/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; Vall-E-X</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/valle_clean/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>XTTS(v1)</p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/coquitts_test_clean/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                      
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt460/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_lt960/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/1_zeroshot_tts/hierspeechpp_eng_kor/7021_85628_000026_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>            
+                    </table>
+
+                  </div>
+                </div> 
+            </div>
+        </section>
+
+        <section class="page-section bg-primary text-white mb-0" id="table11">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block text-white">Comparison with other models</h2>
+              <p class="pre-wrap lead"> All speakers are unseen during training</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 ml-auto">
+                  <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+    
+                    <thead>
+                      <tr >
+                     <th colspan="4"  style="width: 75%" ><em> Sentence 1</em><p></p><p><em>And lay me down in my cold bed and leave my shining lot. </em></p>
+                     </th> 
+                    </tr>
+  
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td><p> GT</p>
+                          <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_gt/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                        <td><p> Prompt </p>
+                          <audio id="player" controls ><source src="audio/2_Table11/naturalspeech2_reference/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><p>  Vall-E </p>
+                          <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_valle/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                     
+                        <td><p>&nbsp;NaturalSpeech 2</p>
+                          <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_naturalspeech2/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                        <td><p>&nbsp; StyleTTS 2 </p>
+                          <audio id="player" controls><source src="audio/2_Table11/styletts2/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                        <td><p> HierSpeech++ </p>
+                          <audio id="player" controls><source src="audio/2_Table11/hierspeech_for_naturalspeech_spr/reference_1.wav" type="audio/wav"></audio>
+                        </td>
+                      </tr>
+                  
+                    </tbody>
+                    </table>
+
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+    
+                      <thead>
+                        <tr >
+                       <th colspan="4"  style="width: 75%" ><em> Sentence 2</em><p></p><p><em>Yea, his honourable worship is within, but he hath a godly minister or two with him, and likewise a leech. </em></p>
+                       </th> 
+                      </tr>
+    
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td><p> GT</p>
+                            <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_gt/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p> Prompt </p>
+                            <audio id="player" controls ><source src="audio/2_Table11/naturalspeech2_reference/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p>  Vall-E </p>
+                            <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_valle/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                       
+                          <td><p>&nbsp;NaturalSpeech 2</p>
+                            <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_naturalspeech2/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; StyleTTS 2 </p>
+                            <audio id="player" controls><source src="audio/2_Table11/styletts2/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p> HierSpeech++ </p>
+                            <audio id="player" controls><source src="audio/2_Table11/hierspeech_for_naturalspeech_spr/reference_2.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                    
+                      </tbody>
+                      </table>
+                      <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+    
+                        <thead>
+                          <tr >
+                         <th colspan="4"  style="width: 75%" ><em> Sentence 3</em><p></p><p><em>The army found the people in poverty and left them in comparative wealth.</em></p>
+                         </th> 
+                        </tr>
+      
+                      </thead>
+                        <tbody>
+                          <tr>
+                            <td><p> GT</p>
+                              <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_gt/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                            <td><p> Prompt </p>
+                              <audio id="player" controls ><source src="audio/2_Table11/naturalspeech2_reference/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><p>  Vall-E </p>
+                              <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_valle/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                         
+                            <td><p>&nbsp;NaturalSpeech 2</p>
+                              <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_naturalspeech2/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                            <td><p>&nbsp; StyleTTS 2 </p>
+                              <audio id="player" controls><source src="audio/2_Table11/styletts2/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                            <td><p> HierSpeech++ </p>
+                              <audio id="player" controls><source src="audio/2_Table11/hierspeech_for_naturalspeech_spr/reference_3.wav" type="audio/wav"></audio>
+                            </td>
+                          </tr>
+                      
+                        </tbody>
+                        </table>
+                        <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+    
+                          <thead>
+                            <tr >
+                           <th colspan="4"  style="width: 75%" ><em> Sentence 4</em><p></p><p><em>Thus did this humane and right minded father comfort his unhappy daughter, and her mother embracing her again, did all she could to soothe her feelings. </em></p>
+                           </th> 
+                          </tr>
+        
+                        </thead>
+                          <tbody>
+                            <tr>
+                              <td><p> GT</p>
+                                <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_gt/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                              <td><p> Prompt </p>
+                                <audio id="player" controls ><source src="audio/2_Table11/naturalspeech2_reference/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><p>  Vall-E </p>
+                                <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_valle/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                           
+                              <td><p>&nbsp;NaturalSpeech 2</p>
+                                <audio id="player" controls><source src="audio/2_Table11/naturalspeech2_naturalspeech2/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                              <td><p>&nbsp; StyleTTS 2 </p>
+                                <audio id="player" controls><source src="audio/2_Table11/styletts2/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                              <td><p> HierSpeech++ </p>
+                                <audio id="player" controls><source src="audio/2_Table11/hierspeech_for_naturalspeech_spr/reference_4.wav" type="audio/wav"></audio>
+                              </td>
+                            </tr>
+                        
+                          </tbody>
+                          </table>
+
+                </div>
+              </div> 
+          </div>
+            </section>
+            <section class="page-section bg-info text-white mb-0" id="mega">
+              <div class="container">
+                <div class="text-center">
+                  <h2 class="page-section-heading d-inline-block text-white">Anime Characters</h2>
+                  <p class="pre-wrap lead"> The audio samples are from <a href="https://boostprompt.github.io/boostprompt/">Mega-TTS demo page</a>.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 ml-auto">
+                      <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+        
+                        <thead>
+                          <tr >
+                         <th colspan="3"  style="width: 60%" ><em> Sentence 1</em><p></p><p><em>Let's go drink until we can't feel feelings anymore. </em></p>
+                         </th> 
+                        </tr>
+      
+                      </thead>
+                        <tbody>
+                          <tr>
+                            <td><p>  Prompt (Sponge Bob) </p>
+                              <audio id="player" controls><source src="audio/3_mega/prompt/3_spongebob_gt.wav" type="audio/wav"></audio>
+                            </td>
+                         
+                            <td><p>Mega-TTS</p>
+                              <audio id="player" controls><source src="audio/3_mega/megatts/3_spongbob.wav" type="audio/wav"></audio>
+                            </td>
+                            <td><p> HierSpeech++ </p>
+                              <audio id="player" controls><source src="audio/3_mega/hierspeech_for_megatts/3_spongebob_gt.wav" type="audio/wav"></audio>
+                            </td>
+                          </tr>
+                      
+                        </tbody>
+                        </table>
+    
+                        <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+        
+                          <thead>
+                            <tr >
+                           <th colspan="3"  style="width: 60%" ><em> Sentence 2</em><p></p><p><em>Uh, it's not like the internet to go crazy about something small and stupid. </em></p>
+                           </th> 
+                          </tr>
+        
+                        </thead>
+                          <tbody>
+                            <tr>
+                              <td><p>  Prompt (Peter Griffin) </p>
+                                <audio id="player" controls><source src="audio/3_mega/prompt/3_petergriffin_gt.wav" type="audio/wav"></audio>
+                              </td>
+                           
+                              <td><p>Mega-TTS</p>
+                                <audio id="player" controls><source src="audio/3_mega/megatts/3_petergriffin.wav" type="audio/wav"></audio>
+                              </td>
+                              <td><p> HierSpeech++ </p>
+                                <audio id="player" controls><source src="audio/3_mega/hierspeech_for_megatts/3_petergriffin_gt.wav" type="audio/wav"></audio>
+                              </td>
+                            </tr>
+                        
+                          </tbody>
+                          </table>
+
+                          <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+        
+                            <thead>
+                              <tr >
+                             <th colspan="3"  style="width: 60%" ><em> Sentence 3</em><p></p><p><em>Then I would never talk to that person about boa constrictors, or primeval forests, or stars. I would bring myself down to his level. </em></p>
+                             </th> 
+                            </tr>
+          
+                          </thead>
+                            <tbody>
+                              <tr>
+                                <td><p>  Prompt (Rick) </p>
+                                  <audio id="player" controls><source src="audio/3_mega/prompt/3_rick_gt.wav" type="audio/wav"></audio>
+                                </td>
+                             
+                                <td><p>Mega-TTS</p>
+                                  <audio id="player" controls><source src="audio/3_mega/megatts/3_rick.wav" type="audio/wav"></audio>
+                                </td>
+                                <td><p> HierSpeech++ </p>
+                                  <audio id="player" controls><source src="audio/3_mega/hierspeech_for_megatts/3_rick_gt.wav" type="audio/wav"></audio>
+                                </td>
+                              </tr>
+                          
+                            </tbody>
+                            </table>
+
+                            <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+        
+                              <thead>
+                                <tr >
+                               <th colspan="3"  style="width: 60%" ><em> Sentence 4</em><p></p><p><em>In what a disgraceful light might it not strike so vain a man! </em></p>
+                               </th> 
+                              </tr>
+            
+                            </thead>
+                              <tbody>
+                                <tr>
+                                  <td><p>  Prompt (Morty) </p>
+                                    <audio id="player" controls><source src="audio/3_mega/prompt/3_morty_gt.wav" type="audio/wav"></audio>
+                                  </td>
+                               
+                                  <td><p>Mega-TTS</p>
+                                    <audio id="player" controls><source src="audio/3_mega/megatts/3_morty.wav" type="audio/wav"></audio>
+                                  </td>
+                                  <td><p> HierSpeech++ </p>
+                                    <audio id="player" controls><source src="audio/3_mega/hierspeech_for_megatts/3_morty_gt.wav" type="audio/wav"></audio>
+                                  </td>
+                                </tr>
+                            
+                              </tbody>
+                              </table>
+    
+                    </div>
+                  </div> 
+              </div>
+                </section>
+        <section class="page-section bg-primary text-white mb-0" id="zeroshot">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Zero-shot Voice Conversion (VCTK)</h2>
+              <p class="pre-wrap lead">All speakers are unseen during training</p>
+            </div>
+
+            <div class="divider-custom divider-light">
+              </div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead><tr>
+                        <th style="width:8%">Source Speaker</th>
+                        <th style="width:8%">Target Speaker</th>
+                        <th style="width: 23%"> Converted</th>
+                        <th style="width: 22%">         </th>
+                        <th style="width: 1%">         </th>
+                        <th style="width: 1%">         </th>
+                      </tr></thead>
+                      
+                    
+                      
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT ( p228 ) </p>
+                            <audio id="player" controls ><source src="audio/GT_VCTK/p228_022.wav" type="audio/wav"></audio>
+                          </td>
+                          <td rowspan="4" style="vertical-align: top;"><p>  GT ( p233 ) </p>
+                            <audio id="player" controls><source src="audio/GT_VCTK/p233_018.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p>&nbsp; AutoVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/AutoVC/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; VoiceMixer</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/VoiceMixer/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DiffVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/DiffVC/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td><p>Diff-HierVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/diffhiervc/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DDDM-VC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/dddmvc/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>YourTTS</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/YourTTS/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierVST (Ours) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/HierVST/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                 
+                        </tr>
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt460/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt960/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_eng_kor/p228_022_to_p233_018.wav" type="audio/wav"></audio>
+                        </tr>
+
+                      </tbody>     
+
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT ( p233 ) </p>
+                            <audio id="player" controls ><source src="audio/GT_VCTK/p233_018.wav" type="audio/wav"></audio>
+                          </td>
+                          <td rowspan="4" style="vertical-align: top;"><p>  GT ( p227 ) </p>
+                            <audio id="player" controls><source src="audio/GT_VCTK/p227_013.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p>&nbsp; AutoVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/AutoVC/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; VoiceMixer</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/VoiceMixer/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DiffVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/DiffVC/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td><p>Diff-HierVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/diffhiervc/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DDDM-VC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/dddmvc/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>YourTTS</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/YourTTS/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierVST (Ours) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/HierVST/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                 
+                        </tr>
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt460/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt960/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_eng_kor/p233_018_to_p227_013.wav" type="audio/wav"></audio>
+                        </tr>
+
+                      </tbody>     
+
+                      <tbody>
+                        <tr>
+                          <td rowspan="4" style="vertical-align: top;"><p> GT ( p240 ) </p>
+                            <audio id="player" controls ><source src="audio/GT_VCTK/p240_022.wav" type="audio/wav"></audio>
+                          </td>
+                          <td rowspan="4" style="vertical-align: top;"><p>  GT ( p236 ) </p>
+                            <audio id="player" controls><source src="audio/GT_VCTK/p236_004.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p>&nbsp; AutoVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/AutoVC/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>&nbsp; VoiceMixer</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/VoiceMixer/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DiffVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/DiffVC/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td><p>Diff-HierVC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/diffhiervc/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>DDDM-VC</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/dddmvc/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p>YourTTS</p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/YourTTS/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierVST (Ours) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/HierVST/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                 
+                        </tr>
+                        <tr>
+                          <td><p><strong>HierSpeech++ <br>(LT460)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt460/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>  
+                          <td><p><strong>HierSpeech++ <br>(LT960)</strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_lt960/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                          </td>
+                          <td><p><strong>HierSpeech++ <br>(LT960, others) </strong></p>
+                            <audio id="player" controls><source src="audio/4_zeroshot_vc/hierspeechpp_eng_kor/p240_022_to_p236_004.wav" type="audio/wav"></audio>
+                        </tr>
+
+                      </tbody>     
+
+  
+
+                    </table>
+                  </div>
+                </div> 
+            </div>
+        </section>        
+        <section class="page-section bg-info text-white mb-0" id="speechsr">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">SpeechSR</h2>
+              <p class="pre-wrap lead">Speech Super-resoltuion (16k --> 48k) </p>
+            </div>
+          
+            <div class="divider-custom divider-light">
+              </div>
+
+            
+
+              <div class="row text-center">
+                <div class="col-lg-auto ml-auto">
+                  <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px">
+                         
+                    <thead>
+                        <tr>
+                          <th>
+                    <div class="col-lg-12 ml-auto">
+                      <h9>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</h9>
+
+                      <br>
+                      <p style="">For more accurate listening, it is recommended to conduct a simple audible frequency test.</p>
+                      <p style="color:red;">WARNING: HIGH-FREQUENCY SAMPLES WITH LOUD VOLUME MAY HAVE PAINFUL SOUNDS.</p>
+                      <span id="test-val1">2000 Hz  </span>&nbsp;&nbsp;
+                      <input id="test_sr" type="input" data-slider-min="2000" data-slider-max="22000"
+                           data-slider-step="2000" data-slider-value="0" data-slider-enabled="true"/>&nbsp;&nbsp;
+                      <span id="test-val2">22000 Hz</span>
+                      <br>
+                      <audio id="audio_panel" controls >
+                        <source id="test_audio_src" src="audio/5_audible/1000.wav" type="audio/wav" />
+                      </audio>  
+                      <br>
+                      <img id="test_img_source" src="audio/5_audible/1000.png" width="50%">
+                      <br>
+                      <h9>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</h9>
+                    </div>
+                          </tr>
+                      </thead>
+                      
+                    </table>
+                  <p> </p>
+              </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-12 ml-auto">
+              <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+
+                <thead>
+                  <tr >
+                 <th colspan="3"  style="width: 60%" ><em> Sentence 1</em><p></p><p><em>"No," said Trot, positively, there's been enough patching in this country and I won't have any more of it.</em></p>
+                 </th> 
+                </tr>
+
+              </thead>
+                <tbody>
+                  <tr>
+                    <td><p> GT (16 kHz)</p>
+                      <audio id="player" controls><source src="audio/6_sr/gt_16k/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/gt_16k/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                 
+                    <td><p> AudioSR </p>
+                      <audio id="player" controls><source src="audio/6_sr/gt_asr/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/gt_asr/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                    <td><p> SpeechSR </p>
+                      <audio id="player" controls><source src="audio/6_sr/gt_ssr/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/gt_ssr/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><p> HierSpeech++ (16 kHz) </p>
+                      <audio id="player" controls><source src="audio/6_sr/syn_voc/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/syn_voc/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                 
+                    <td><p> HierSpeech++ (+AudioSR)</p>
+                      <audio id="player" controls><source src="audio/6_sr/syn_asr/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/syn_asr/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                    <td><p> HierSpeech++ (+SpeechSR) </p>
+                      <audio id="player" controls><source src="audio/6_sr/syn_ssr/8555_284449_000032_000000.wav" type="audio/wav"></audio>
+                      <img id="imgpl" src="audio/6_sr/syn_ssr/8555_284449_000032_000000.png" width="100%">
+                    </td>
+                  </tr>
+                  
+              
+                </tbody>
+                </table>
+
+                <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+
+                  <thead>
+                    <tr >
+                   <th colspan="3"  style="width: 60%" ><em> Sentence 2</em><p></p><p><em>But tell me, please, what you intend to do with this new lot of the Powder of Life, which Dr. Pipt is making.</em></p>
+                   </th> 
+                  </tr>
+  
+                </thead>
+                  <tbody>
+                    <tr>
+                      <td><p> GT (16 kHz)</p>
+                        <audio id="player" controls><source src="audio/6_sr/gt_16k/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/gt_16k/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                   
+                      <td><p> AudioSR </p>
+                        <audio id="player" controls><source src="audio/6_sr/gt_asr/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/gt_asr/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                      <td><p> SpeechSR </p>
+                        <audio id="player" controls><source src="audio/6_sr/gt_ssr/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/gt_ssr/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><p> HierSpeech++ (16 kHz) </p>
+                        <audio id="player" controls><source src="audio/6_sr/syn_voc/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/syn_voc/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                   
+                      <td><p> HierSpeech++ (+AudioSR)</p>
+                        <audio id="player" controls><source src="audio/6_sr/syn_asr/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/syn_asr/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                      <td><p> HierSpeech++ (+SpeechSR) </p>
+                        <audio id="player" controls><source src="audio/6_sr/syn_ssr/1284_1180_000043_000000.wav" type="audio/wav"></audio>
+                        <img id="imgpl" src="audio/6_sr/syn_ssr/1284_1180_000043_000000.png" width="100%">
+                      </td>
+                    </tr>
+                    
+                
+                  </tbody>
+                  </table>
+
+                  <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+
+                    <thead>
+                      <tr >
+                     <th colspan="3"  style="width: 60%" ><em> Sentence 3</em><p></p><p><em>The end he had been born to serve yet did not see had led him to escape by an unseen path and now it beckoned to him once more and a new adventure was about to be opened to him.</em></p>
+                     </th> 
+                    </tr>
+    
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td><p> GT (16 kHz)</p>
+                          <audio id="player" controls><source src="audio/6_sr/gt_16k/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/gt_16k/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                     
+                        <td><p> AudioSR </p>
+                          <audio id="player" controls><source src="audio/6_sr/gt_asr/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/gt_asr/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                        <td><p> SpeechSR </p>
+                          <audio id="player" controls><source src="audio/6_sr/gt_ssr/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/gt_ssr/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><p> HierSpeech++ (16 kHz) </p>
+                          <audio id="player" controls><source src="audio/6_sr/syn_voc/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/syn_voc/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                     
+                        <td><p> HierSpeech++ (+AudioSR)</p>
+                          <audio id="player" controls><source src="audio/6_sr/syn_asr/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/syn_asr/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                        <td><p> HierSpeech++ (+SpeechSR) </p>
+                          <audio id="player" controls><source src="audio/6_sr/syn_ssr/1089_134691_000005_000003.wav" type="audio/wav"></audio>
+                          <img id="imgpl" src="audio/6_sr/syn_ssr/1089_134691_000005_000003.png" width="100%">
+                        </td>
+                      </tr>
+                      
+                  
+                    </tbody>
+                    </table>
+
+              
+
+            </div>
+          </div> 
+
+      
+        </section>
+
+
+
+        <div class="scroll-to-top d-lg-none position-fixed"><a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/scripts.js"></script>
+        
+        <!-- Bootstrap slider JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
+
+        <!-- slider JS -->
+        <script type="text/javascript">
+        </script>
+
+
+<script type="text/javascript">
+  var sr = 0
+  var test_sr = 0
+
+$(function() {
+        $('#test_sr').slider({
+            formatter: function(value) {
+                return value + ' Hz';
+            }
+        });
+
+        $('#test_sr').on("slide click", function () {
+           test_reload()
+        });
+      });
+
+  function test_reload() {
+    test_sr = Number($("#test_sr").val());
+    console.log(test_sr)
+    var test_image = "audio/5_audible/" + test_sr + ".png";
+    var test_audio = "audio/5_audible/" + test_sr + ".wav";
+
+    console.log(test_image)
+    console.log(test_audio)
+
+    $('#test_img_source').attr("src", test_image);
+    $('#test_audio_src').attr("src", test_audio);
+    console.log($('#test_audio_src').val());
+    console.log($("#audio_panel"))
+    $('#audio_panel')[0].load();
+  };
+
+
+
+
+function sr_click(i, name){
+    sr = i;
+    wav_name = '/'+name+'.wav';
+    png_name = '/'+name+'.png';
+    $('#sr'+i).css("background-color", "greenyellow")
+
+    for (j=0;j<26000;j +=2000)
+    {
+      if (j!=i)
+      {	
+        $('#sr'+j).css("background-color", "")
+      }	
+    }
+
+
+    audio_reload()
+  }
+</script>
+    </body>
+</html>
+
+<style>
+
+  .noborder{
+          border: none!important;
+    }
+  .grid-image {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      margin:30px 0;
+  }
+  .grid-image img {
+      width:calc(33.333% - 10px);
+      margin:0 15px 15px 0;
+  }
+  .grid-image img:nth-of-type(3n),
+  .grid-image img:last-child {
+      margin-right:0;
+  }
+  @media screen and (max-width:640px){
+    .grid-image img {
+      width:calc(50% - 15px);
+    }
+  }
+  @media screen and (max-width:480px){
+    .grid-image img:nth-of-type(2n) {
+      margin-right:0;
+    }
+    .grid-image img:nth-of-type(3n) {
+      margin-right:15px;
+    }
+  }
+  </style>
+
+
+
